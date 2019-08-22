@@ -5,22 +5,24 @@ come from each email address and print the results to the console.
 Author: Oscar Lopez
 """
 
-number_mails = dict()
+def sender_count(mail_log):
+    num_mails = dict()
+    try:
+        fopen = open(mail_log)
+    except:
+        print('ERROR:',mail_log,'does not exist!')
+        return None
+    for line in fopen:
+        if line.startswith('From'):
+            words = line.split()
+            if len(words) >= 2:
+                if words[1] not in num_mails:
+                    num_mails[words[1]] = 1
+                else:
+                    num_mails[words[1]] += 1
+    return  num_mails
 
-fname = input('Enter name of mail log to analyze: ')
-try:
-    fopen = open(fname)
-except:
-    print('ERROR:',fname,'does not exist or has no read permissions! Exiting.')
-    exit()
-for line in fopen:
-    if line.startswith('From'):
-        words = line.split()
-        if len(words) >= 2:
-            if words[1] not in number_mails:
-                number_mails[words[1]] = 1
-            else:
-                number_mails[words[1]] += 1
 
-print(number_mails)
+fname = input('Enter name of file:')
+print(sender_count(fname))
 
