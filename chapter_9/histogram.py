@@ -22,7 +22,12 @@ def sender_count(mail_log):
                     num_mails[words[1]] += 1
     return  num_mails
 
+#TODO: Finish function that finds the sender with the most emails.
+def sender_max(dict_senders):
+    max_send = dict()
+
 
 fname = input('Enter name of file:')
 print(sender_count(fname))
+max_sender(sender_count(fname))
 
