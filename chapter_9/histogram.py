@@ -32,8 +32,16 @@ def sender_max(dict_senders):
             max_sent = int(dict_senders[sender])
     return max_sender
 
+def domain_count(dict_senders):
+    domain_dict = dict()
+    for sender in dict_senders:
+        words = sender.split('@')
+        domain_dict.update({words[1]:dict_senders[sender]})
+    return domain_dict
+
 
 fname = input('Enter name of file:')
 print(sender_count(fname))
 print(sender_max(sender_count(fname)))
+print(domain_count(sender_count(fname)))
 
