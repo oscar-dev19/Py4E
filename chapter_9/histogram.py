@@ -1,9 +1,9 @@
 """
 A program that will read through a mail log and count how many messages have
 come from each email address and print the results to the console.
-
 Author: Oscar Lopez
 """
+
 
 def sender_count(mail_log):
     num_mails = dict()
@@ -22,12 +22,18 @@ def sender_count(mail_log):
                     num_mails[words[1]] += 1
     return  num_mails
 
-#TODO: Finish function that finds the sender with the most emails.
+
 def sender_max(dict_senders):
-    max_send = dict()
+    max_sender = dict()
+    max_sent = 0
+    for sender in dict_senders:
+        if dict_senders[sender] > max_sent:
+            max_sender = {sender,dict_senders[sender]}
+            max_sent = int(dict_senders[sender])
+    return max_sender
 
 
 fname = input('Enter name of file:')
 print(sender_count(fname))
-max_sender(sender_count(fname))
+print(sender_max(sender_count(fname)))
 
