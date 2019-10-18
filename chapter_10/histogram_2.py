@@ -1,6 +1,7 @@
 """
 A program that will read through a mail log and count how many messages have
 come from each email address and print the results to the console.
+
 Author: Oscar Lopez
 """
 
@@ -40,10 +41,17 @@ def domain_count(dict_senders):
         domain_dict.update({words[1]:dict_senders[sender]})
     return domain_dict
 
-#TODO: Add a method that will sort the dictionary as a sorted tuple.
+
+def sort_as_tuple(dict_senders):
+    l = list()
+    for sender, num_sent in dict_senders.items():
+        l.append((num_sent, sender))
+    l.sort(reverse=True)
+    return tuple(l)
 
 
 fname = input('Enter name of file:')
 print(sender_count(fname))
 print(sender_max(sender_count(fname)))
 print(domain_count(sender_count(fname)))
+print(sort_as_tuple(sender_count(fname)))
