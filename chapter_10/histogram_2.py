@@ -42,12 +42,12 @@ def domain_count(dict_senders):
     return domain_dict
 
 
-def sort_as_tuple(dict_senders):
+def sort_as_tupls(dict_senders):
     l = list()
     for sender, num_sent in dict_senders.items():
         l.append((num_sent, sender))
     l.sort(reverse=True)
-    return tuple(l)
+    return f'{l[0][1]}, {l[0][0]} commits'
 
 
 fname = input('Enter name of file:')
